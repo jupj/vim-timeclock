@@ -1,2 +1,6 @@
 # vim-timeclock
-Vim plugin for timeclock in hledger
+
+This plugin provides syntax highlighting and commands for maintaing
+`*.timeclock` files with hledger.
+
+For a list of commands, please see the [help file](doc/timeclock.txt).
