@@ -35,7 +35,7 @@ COMMANDS                                                  *timeclock-commands*
                     and description for the item.
 
 ==============================================================================
-MAPPINGS                                                        *mdo-mappings*
+MAPPINGS                                                  *timeclock-mappings*
 
 *<LocalLeader>i* |:TimeclockIn|
 *<LocalLeader>o* |:TimeclockOut|
