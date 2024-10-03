@@ -22,23 +22,23 @@ Please see hledger documentation for more info about the timeclock format.
 ==============================================================================
 COMMANDS                                                  *timeclock-commands*
 
-*:TimeclockIn*        Append a clock-in entry with current time to the end of
-                    the file. Leave the editor in INSERT mode for the user to
-                    insert the account and description for the item.
+*:TimeclockIn* {timestamp}    Append a clock-in entry to the end of the file.
+                            Leave the editor in INSERT mode for the user to
+                            insert the account and description for the item.
 
-*:TimeclockOut*       Append a clock-out entry with current time to the end of
-                    the file.
+*:TimeclockOut* {timestamp}   Append a clock-out entry to the end of the file.
 
-*:TimeclockSwitch*    Append a clock-out entry followed by a clock-in entry,
-                    both with current time, to the end of the file. Leave the
-                    editor in INSERT mode for the user to insert the account
-                    and description for the item.
+*:TimeclockSwitch* {timestamp}    Append a clock-out entry followed by a
+                                clock-in entry, both, to the end of the file.
+                                Leave the editor in INSERT mode for the user
+                                to insert the account and description for the
+                                item.
 
 ==============================================================================
 MAPPINGS                                                  *timeclock-mappings*
 
-*<LocalLeader>i* |:TimeclockIn|
-*<LocalLeader>o* |:TimeclockOut|
-*<LocalLeader>s* |:TimeclockSwitch|
+*<LocalLeader>i* :TimeclockIn <NOW>
+*<LocalLeader>o* :TimeclockOut <NOW>
+*<LocalLeader>s* :TimeclockSwitch <NOW>
 
 vim:ft=help:

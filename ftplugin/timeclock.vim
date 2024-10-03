@@ -1,7 +1,11 @@
-command! TimeclockIn call timeclock#in()
-command! TimeclockOut call timeclock#out()
-command! TimeclockSwitch call timeclock#switch()
+if !exists("g:timeclock_fmt")
+    let g:timeclock_fmt = "%Y-%m-%d %H:%M"
+endif
 
-nnoremap <buffer> <localleader>i :TimeclockIn<cr>
-nnoremap <buffer> <localleader>o :TimeclockOut<cr>
-nnoremap <buffer> <localleader>s :TimeclockSwitch<cr>
+command! -nargs=1 TimeclockIn call timeclock#in(<f-args>)
+command! -nargs=1 TimeclockOut call timeclock#out(<f-args>)
+command! -nargs=1 TimeclockSwitch call timeclock#switch(<f-args>)
+
+nnoremap <buffer> <localleader>i :TimeclockIn <c-r>=strftime(g:timeclock_fmt)<cr>
+nnoremap <buffer> <localleader>o :TimeclockOut <c-r>=strftime(g:timeclock_fmt)<cr>
+nnoremap <buffer> <localleader>s :TimeclockSwitch <c-r>=strftime(g:timeclock_fmt)<cr>
