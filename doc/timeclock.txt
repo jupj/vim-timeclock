@@ -20,6 +20,13 @@ This plugin provides syntax highlighting and commands for maintaing
 Please see hledger documentation for more info about the timeclock format.
 
 ==============================================================================
+VARIABLES                                                *timeclock-variables*
+
+*g:timeclock_fmt*     The strftime format for generated timestamps. Override
+                    this variable to customize the timestamp format
+                    for new timeclock entries.
+
+==============================================================================
 COMMANDS                                                  *timeclock-commands*
 
 *:TimeclockIn* {timestamp}    Append a clock-in entry to the end of the file.
