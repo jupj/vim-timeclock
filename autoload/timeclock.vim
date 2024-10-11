@@ -1,21 +1,20 @@
-" timeclock#in() appends an "i" line with the timestamp to the end of
-" the file and leaves the editor in INSERT mode for the user to enter the
-" account.
-function! timeclock#in(timestamp)
-    call append("$", "i " .. a:timestamp .. " ")
+" timeclock#in() appends an "i" line to the end of the file.
+function! timeclock#in(entry)
+    call append("$", "i " .. a:entry)
     normal! G
-    startinsert!
 endfunction
 
-" timeclock#out() appends an "o" line with the timestamp to the end of
-" the file.
-function! timeclock#out(timestamp)
-    call append("$", "o " .. a:timestamp)
+" timeclock#out() appends an "o" line to the end of the file.
+function! timeclock#out(entry)
+    call append("$", "o " .. a:entry)
     normal! G
 endfunction
 
 " timeclock#switch() appends and "o" line followed by an "i" line.
-function! timeclock#switch(timestamp)
-    call timeclock#out(a:timestamp)
-    call timeclock#in(a:timestamp)
+" It uses only the timestamp for "o" and the entire input for "i".
+function! timeclock#switch(entry)
+    let l:timestamp = a:entry->slice(0, matchend(a:entry, '^\d\d\d\d.\d\d.\d\d \d\d:\d\d'))
+    call timeclock#out(l:timestamp)
+
+    call timeclock#in(a:entry)
 endfunction
