@@ -2,6 +2,8 @@ if !exists("g:timeclock_fmt")
     let g:timeclock_fmt = "%Y-%m-%d %H:%M"
 endif
 
+setlocal omnifunc=timeclock#complete
+
 command! -nargs=1 TimeclockIn call timeclock#in(<f-args>)
 command! -nargs=1 TimeclockOut call timeclock#out(<f-args>)
 command! -nargs=1 TimeclockSwitch call timeclock#switch(<f-args>)

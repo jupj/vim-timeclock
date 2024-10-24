@@ -48,4 +48,12 @@ MAPPINGS                                                  *timeclock-mappings*
 *<LocalLeader>o* :TimeclockOut <NOW>
 *<LocalLeader>s* :TimeclockSwitch <NOW>
 
+==============================================================================
+COMPLETION                                              *timeclock-completion*
+
+This plugin provides omni-completion for account names. To invoke completion,
+write a search pattern for the account name after the in-timestamp and press
+CTRL-X CTRL-O. Completion uses fuzzy matching, so you can omit characters from
+the search pattern. See `:help fuzzy-matching` for more info.
+
 vim:ft=help:

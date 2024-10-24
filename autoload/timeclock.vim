@@ -18,3 +18,32 @@ function! timeclock#switch(entry)
 
     call timeclock#in(a:entry)
 endfunction
+
+" s:listAccounts() returns a list of all accounts in the current buffer
+function! s:listAccounts()
+    " use dict keys as the set of accounts
+    let accounts = {}
+
+    for line in getline(1, line("$"))
+        let account = matchstr(line, '\v^i \d\S+ \d\S+\s+\zs\S+( \S+)*>')
+        if account != ""
+            let accounts[account] = 1
+        endif
+    endfor
+
+    return sort(keys(accounts))
+endfunction
+
+" timeclock#complete() is a completion function for account names
+function! timeclock#complete(findstart, base)
+    if a:findstart
+        let start = matchend(getline('.'), '\v^i \d\S+ \d\S+\s+<')
+        if start < 0
+            " no match, leave completion mode
+            return -3
+        endif
+        return start
+    endif
+
+    return matchfuzzy(s:listAccounts(), a:base)
+endfunction
