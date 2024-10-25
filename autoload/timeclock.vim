@@ -45,5 +45,8 @@ function! timeclock#complete(findstart, base)
         return start
     endif
 
-    return matchfuzzy(s:listAccounts(), a:base)
+    let matches = matchfuzzy(s:listAccounts(), a:base)
+    " keep base string as an option
+    call add(matches, a:base)
+    return matches
 endfunction
