@@ -2,6 +2,7 @@ if !exists("g:timeclock_fmt")
     let g:timeclock_fmt = "%Y-%m-%d %H:%M"
 endif
 
+setlocal commentstring=#\ %s
 setlocal omnifunc=timeclock#complete
 
 command! TimeclockCopy call timeclock#copy()
