@@ -29,6 +29,11 @@ VARIABLES                                                *timeclock-variables*
 ==============================================================================
 COMMANDS                                                  *timeclock-commands*
 
+*:TimeclockCopy*      Copy the timestamp from the entry on the current line
+                    and insert a new entry with the opposite "i" or "o" type
+                    and the same timestamp. Leave user in INSERT mode to edit
+                    the timestamp, add account and description.
+
 *:TimeclockIn* {timestamp}    Append a clock-in entry to the end of the file.
                             Leave the editor in INSERT mode for the user to
                             insert the account and description for the item.
@@ -44,6 +49,7 @@ COMMANDS                                                  *timeclock-commands*
 ==============================================================================
 MAPPINGS                                                  *timeclock-mappings*
 
+*<LocalLeader>c* :TimeclockCopy
 *<LocalLeader>i* :TimeclockIn <NOW>
 *<LocalLeader>o* :TimeclockOut <NOW>
 *<LocalLeader>s* :TimeclockSwitch <NOW>

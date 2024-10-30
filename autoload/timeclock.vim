@@ -19,6 +19,32 @@ function! timeclock#switch(entry)
     call timeclock#in(a:entry)
 endfunction
 
+" timeclock#copy() copies the timestamp from the current line and inserts a
+" new line with the opposite "i/o" and the same timestamp.
+function! timeclock#copy()
+    let m = matchlist(getline('.'), '\v^([io])\s+(\d\S+\s+\d\S+)')
+    if len(m) == 0
+        echom "Not a i/o line"
+        return
+    endif
+
+    let type = m[1]
+    let timestamp = m[2]
+
+    " Reverse the "i/o" type
+    if type == "i"
+        let type = "o"
+    else
+        let type = "i"
+    endif
+
+    call append(line('.'), type .. ' ' .. timestamp)
+
+    " Move to the new line and enter insert mode
+    normal! j
+    startinsert!
+endfunction
+
 " s:listAccounts() returns a list of all accounts in the current buffer
 function! s:listAccounts()
     " use dict keys as the set of accounts
