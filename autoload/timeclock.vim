@@ -13,7 +13,7 @@ endfunction
 " timeclock#switch() appends and "o" line followed by an "i" line.
 " It uses only the timestamp for "o" and the entire input for "i".
 function! timeclock#switch(entry)
-    let l:timestamp = a:entry->slice(0, matchend(a:entry, '^\d\d\d\d.\d\d.\d\d \d\d:\d\d'))
+    let l:timestamp = matchstr(a:entry, '\v^\d\S+ \d\S+')
     call timeclock#out(l:timestamp)
 
     call timeclock#in(a:entry)
